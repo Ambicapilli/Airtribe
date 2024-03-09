@@ -1,7 +1,7 @@
 ## **Airtribe Backend Internship Assignment**
 This document provides instructions for setting up and running the backend server for the Airtribe application, as well as details on the database design and APIs implemented.
 
-#Installation
+#**Installation**
 Visual Studio Code Extensions
 
 Make sure you have the following extensions installed in Visual Studio Code:
@@ -23,7 +23,7 @@ cd airtribe-backend
 npm install
 Database Design
 
-##Framework
+## **Framework**
 
 The framework used for this backend server is Express.js. Express.js is a popular web application framework for Node.js, providing a robust set of features to build web and mobile applications.
 
@@ -73,7 +73,7 @@ By utilizing Express.js, the code simplifies the process of handling HTTP reques
 
 
 
-##The database schema for the Airtribe application is as follows:
+## **The database schema for the Airtribe application is as follows:**
 
 Database Tables
 Instructors
@@ -105,7 +105,7 @@ Copy code
 node server.js
 The server will start running on port 34060 by default.
 
-##APIs
+##**APIs**
 Airtribe Backend APIs
 This document outlines the APIs available in the Airtribe backend server.
 
@@ -166,7 +166,7 @@ Get All Registrations:
 Endpoint: GET /registrations
 Description: Retrieves all course registrations
 
-##Test data can be manually inserted into the database or generated using Postman requests.
+## **Test data can be manually inserted into the database or generated using Postman requests.**
 
 ##Conclusion
 Follow the provided instructions to set up and run the Airtribe backend server. If you encounter any issues or have questions, feel free to reach out to [your_email@example.com].

@@ -2,7 +2,7 @@
 
 This document provides instructions for setting up and running the backend server for the Airtribe application, as well as details on the database design and APIs implemented.
 
-#**Installation**
+# **Installation**
 
 Visual Studio Code Extensions
 

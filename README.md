@@ -22,39 +22,82 @@ Copy code
 cd airtribe-backend
 npm install
 Database Design
+
+##Framework
+
+The framework used for this backend server is Express.js. Express.js is a popular web application framework for Node.js, providing a robust set of features to build web and mobile applications.
+
+Here's how Express.js is utilized in this code:
+
+Importing Express: The Express framework is imported using the require() function:
+
+javascript
+Copy code
+const express = require('express');
+Creating an Express Application: An instance of the Express application is created:
+
+javascript
+Copy code
+const app = express();
+Middleware Usage: Various middleware are utilized in the application, such as body-parser for parsing JSON request bodies and cors for enabling Cross-Origin Resource Sharing:
+
+javascript
+Copy code
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+app.use(bodyParser.json());
+app.use(cors());
+Defining Routes: Routes are defined for handling different HTTP requests. For example:
+
+javascript
+Copy code
+app.post('/instructors', (req, res) => {
+  // Handle POST request to create a new instructor
+});
+
+app.get('/instructors', (req, res) => {
+  // Handle GET request to fetch all instructors
+});
+Starting the Server: Finally, the Express application is configured to listen on a specific port:
+
+javascript
+Copy code
+const PORT = process.env.PORT || 34060; // Default port is 34060
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+By utilizing Express.js, the code simplifies the process of handling HTTP requests, defining routes, and managing the server's lifecycle.
+
+
+
+
+
 ##The database schema for the Airtribe application is as follows:
 
+Database Tables
 Instructors
-
-id (Primary Key)
-name
-email
+id INT (Primary Key)
+name VARCHAR(255) NOT NULL
+email VARCHAR(255) NOT NULL (Unique)
 Courses
-
-id (Primary Key)
-instructor_id (Foreign Key referencing Instructors.id)
-name
-max_seats
-start_date
+id INT (Primary Key)
+instructor_id INT (Foreign Key referencing Instructors.id)
+name VARCHAR(255) NOT NULL
+max_seats INT
+start_date DATE
 Leads
-
-id (Primary Key)
-course_id (Foreign Key referencing Courses.id)
-name
-email
-phone_number
-linkedin_profile
-status
+id INT (Primary Key)
+course_id INT (Foreign Key referencing Courses.id)
+name VARCHAR(255) NOT NULL
+email VARCHAR(255) NOT NULL
+phone VARCHAR(20)
+linkedin_profile VARCHAR(255)
+status VARCHAR(20) DEFAULT 'Pending'
 Comments
-
-id (Primary Key)
-lead_id (Foreign Key referencing Leads.id)
-instructor_id (Foreign Key referencing Instructors.id)
-comment
-created_at
-updated_at
-Running the Server
-Start Server
+id INT (Primary Key)
+lead_id INT (Foreign Key referencing Leads.id)
+comment TEXT
 
 Run the following command to start the backend server:
 
@@ -63,31 +106,65 @@ node server.js
 The server will start running on port 34060 by default.
 
 ##APIs
-Create Course API
+Airtribe Backend APIs
+This document outlines the APIs available in the Airtribe backend server.
 
-Endpoint: POST /api/courses
+Instructors
+Create Instructor:
+
+Endpoint: POST /instructors
+Description: Creates a new instructor.
+Request Body: { name, email }
+Get All Instructors:
+
+Endpoint: GET /instructors
+Description: Retrieves all instructors.
+Courses
+Create Course:
+
+Endpoint: POST /courses
+Description: Creates a new course.
 Request Body: { name, instructor_id, max_seats, start_date }
-Update Course Details API
+Get All Courses:
 
-Endpoint: PUT /api/courses/:courseId
+Endpoint: GET /courses
+Description: Retrieves all courses.
+Update Course Details:
+
+Endpoint: PUT /courses/:id
+Description: Updates details of a specific course.
 Request Body: { name, max_seats, start_date }
-Course Registration API
+Leads
+Update Lead Status:
 
-Endpoint: POST /api/courses/:courseId/register
-Request Body: { name, email, phone_number, linkedin_profile }
-Lead Update API
-
-Endpoint: PUT /api/leads/:leadId
+Endpoint: PUT /leads/:id/update
+Description: Updates the status of a lead.
 Request Body: { status }
-Lead Search API
+Search Leads:
 
-Endpoint: GET /api/leads?search=name_or_email
-Add Comment API
+Endpoint: GET /leads/search
+Description: Searches leads by name or email.
+Query Parameters: { name, email }
+Comments
+Add Comment:
 
-Endpoint: POST /api/comments
-Request Body: { lead_id, instructor_id, comment }
-Testing
-Postman can be used to test the APIs. Set the base URL to http://localhost:34060/api.
+Endpoint: POST /comments
+Description: Adds a comment to a lead.
+Request Body: { lead_id, comment }
+Get All Comments:
+
+Endpoint: GET /comments
+Description: Retrieves all comments.
+Course Registration
+Register for a Course:
+
+Endpoint: POST /register
+Description: Registers a user for a course.
+Request Body: { name, email, phone, linkedin }
+Get All Registrations:
+
+Endpoint: GET /registrations
+Description: Retrieves all course registrations
 
 ##Test data can be manually inserted into the database or generated using Postman requests.
 

@@ -1,8 +1,8 @@
-## **Airtribe Backend Internship Assignment**
+### **Airtribe Backend Internship Assignment**
 
 This document provides instructions for setting up and running the backend server for the Airtribe application, as well as details on the database design and APIs implemented.
 
-# **Installation**
+## **Installation**
 
 Visual Studio Code Extensions
 
@@ -25,7 +25,7 @@ cd airtribe-backend
 npm install
 Database Design
 
-## **Framework**
+### **Framework**
 
 The framework used for this backend server is Express.js. Express.js is a popular web application framework for Node.js, providing a robust set of features to build web and mobile applications.
 
@@ -75,22 +75,22 @@ By utilizing Express.js, the code simplifies the process of handling HTTP reques
 
 
 
-## **The database schema for the Airtribe application is as follows:**
+### **The database schema for the Airtribe application is as follows:**
 
 Database Tables
-# *Instructors*
+## *Instructors*
 id INT (Primary Key)
 name VARCHAR(255) NOT NULL
 email VARCHAR(255) NOT NULL (Unique)
 
-# *Courses*
+## *Courses*
 id INT (Primary Key)
 instructor_id INT (Foreign Key referencing Instructors.id)
 name VARCHAR(255) NOT NULL
 max_seats INT
 start_date DATE
 
-# *Leads*
+## *Leads*
 id INT (Primary Key)
 course_id INT (Foreign Key referencing Courses.id)
 name VARCHAR(255) NOT NULL
@@ -99,7 +99,7 @@ phone VARCHAR(20)
 linkedin_profile VARCHAR(255)
 status VARCHAR(20) DEFAULT 'Pending'
 
-# *Comments*
+## *Comments*
 id INT (Primary Key)
 lead_id INT (Foreign Key referencing Leads.id)
 comment TEXT
@@ -110,81 +110,74 @@ Copy code
 node server.js
 The server will start running on port 34060 by default.
 
-## **APIs**
+### **APIs**
 
 Airtribe Backend APIs
 This document outlines the APIs available in the Airtribe backend server.
 
-Instructors
+## *Instructors*
+
 Create Instructor:
-
-
 Endpoint: POST /instructors
 Description: Creates a new instructor.
 Request Body: { name, email }
+
 Get All Instructors:
-
-
 Endpoint: GET /instructors
 Description: Retrieves all instructors.
-Courses
+
+## *Courses*
+
 Create Course:
-
-
 Endpoint: POST /courses
 Description: Creates a new course.
 Request Body: { name, instructor_id, max_seats, start_date }
+
 Get All Courses:
-
-
 Endpoint: GET /courses
 Description: Retrieves all courses.
+
 Update Course Details:
-
-
 Endpoint: PUT /courses/:id
 Description: Updates details of a specific course.
 Request Body: { name, max_seats, start_date }
-Leads
+
+## *Leads*
+
 Update Lead Status:
-
-
 Endpoint: PUT /leads/:id/update
 Description: Updates the status of a lead.
 Request Body: { status }
+
 Search Leads:
-
-
 Endpoint: GET /leads/search
 Description: Searches leads by name or email.
 Query Parameters: { name, email }
-Comments
+
+## *Comments*
+
 Add Comment:
-
-
 Endpoint: POST /comments
 Description: Adds a comment to a lead.
 Request Body: { lead_id, comment }
+
 Get All Comments:
-
-
 Endpoint: GET /comments
 Description: Retrieves all comments.
+
 Course Registration
 Register for a Course:
-
-
 Endpoint: POST /register
 Description: Registers a user for a course.
 Request Body: { name, email, phone, linkedin }
-Get All Registrations:
 
+Get All Registrations:
 Endpoint: GET /registrations
 Description: Retrieves all course registrations
 
-## **Test data can be manually inserted into the database or generated using Postman requests.**
+### **Test data can be manually inserted into the database or generated using Postman requests.**
 
-##Conclusion
-Follow the provided instructions to set up and run the Airtribe backend server. If you encounter any issues or have questions, feel free to reach out to [ambica34@gmail.com].
+### Conclusion
+Follow the provided instructions to set up and run the Airtribe backend server. If you encounter any issues or have questions, feel free to reach out to ambica34@gmail.com.
 
-## *Happy Coding!*
+### *Happy Coding!*
